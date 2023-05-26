@@ -37,6 +37,9 @@
           </p>
 	{{ end }}
 
+        {{ $readTime := cond (gt .ReadingTime 1) "minutes" "minute" }}
+        <p>Temps de lecture : {{ .ReadingTime }} {{ $readTime }}.</p>
+
         <ul class="post-tags">
           {{ range $tag := $postTags }}
            {{ if not (in $hiddenTags $tag) }}
