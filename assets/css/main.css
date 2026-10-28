@@ -6,18 +6,23 @@
   --light-secondary-color: #dddddd;
   --light-tertiary-color: #272822;
   --light-text-color: black;
+
+  --light-gray-color: DimGray;
+  --light-link-color: inherit;
 }
 
 @font-face {
   font-family: Lato;
   font-weight: 400;
-  src: url("/fonts/Lato-Regular.ttf");
+  src: url("../fonts/Lato-Regular.woff2") format("woff2"),
+       url("../fonts/Lato-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: Lato;
   font-weight: 700;
-  src: url("/fonts/Lato-Bold.ttf");
+  src: url("../fonts/Lato-Bold.woff2") format("woff2"),
+       url("../fonts/Lato-Bold.ttf") format("truetype");
 }
 
 html {
@@ -44,7 +49,7 @@ strong {
 }
 
 a {
-  color: inherit;
+  color: var(--light-link-color);
 }
 
 /* This is set in partials/head.html and is populated via config */
@@ -348,7 +353,7 @@ code {
 
 blockquote {
   border-left: 2px solid var(--light-secondary-color);
-  color: grey;
+  color: var(--light-gray-color);
   padding-left: 1rem;
   margin-left: 0;
 }
@@ -470,7 +475,7 @@ table td {
   overflow-wrap: break-word;
 }
 .post .post-date, .prev-post-date, .next-post-date {
-  color: gray;
+  color: var(--light-gray-color);
 }
 .post .post-content {
   line-height: 1.7;
@@ -500,6 +505,23 @@ table td {
   margin-left: auto;
   margin-right: auto;
 }
+.post-content dl {
+  margin: 1.5rem 0;
+}
+.post-content dt {
+  font-weight: 600;
+  margin-top: 1.25rem;
+  padding: 0 0 0 0.75rem;
+  border-left: 2px solid;
+}
+.post-content dt:first-child {
+  margin-top: 0;
+}
+.post-content dd {
+  margin: 0;
+  padding: 0.25rem 0 0 0.75rem;
+  border-left: 2px solid;
+}
 
 /* LIST */
 .list-posts .list-title {
@@ -511,7 +533,7 @@ table td {
 .list-posts .post-title {
   margin: 18px 0 0 15px;
 }
-.list-posts a {
+.list-posts .post-title a {
   text-decoration: none;
 }
 .post-title .post-link,
@@ -619,7 +641,7 @@ table td {
   }
 
   .list-posts .post-date {
-    color: gray;
+    color: var(--light-gray-color);
   }
 
   .footer {

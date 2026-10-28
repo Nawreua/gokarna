@@ -169,6 +169,19 @@ You can add `params` allowing menu link to open in a new tab, for example:
 
 The goal of this feature is to give the user more control over the theme. It's functioning is very straightforward - "You can inject any HTML you want in the `<head>` tag" . This may seem simple at first, but it opens up a lot of possibilities.
 
+### Custom head partial
+
+For longer HTML fragments, or additions that need Hugo templating, override the `layouts/partials/custom-head.html` partial. The theme ships it empty. It is rendered inside `<head>` immediately before `customHeadHTML`, so when both add the same thing, `customHeadHTML` wins.
+
+Being a regular template, it gives you Hugo functions such as `relURL`, `resources.Get` and `minify`, and it can include other partials. To add your own stylesheet, place it at `assets/css/custom.css` and write:
+
+```html
+{{ $customStyle := resources.Get "css/custom.css" | minify }}
+<link rel="stylesheet" href="{{ $customStyle.RelPermalink }}">
+```
+
+Note that `resources.Get` reads from the `assets/` folder, not the `static/` folder used by the `customHeadHTML` examples below.
+
 ## Custom Comment HTML 
 
 Similar to custom head and footer HTML, you can add custom HTML for comments at the end of every post. Its in a `<div>` with the id `comments` which can be then customized with your external CSS.
@@ -396,3 +409,44 @@ The years of `.Date` and `.Lastmod` are used to create a date range for your cop
 [minify]
     minifyOutput = true
 ```
+
+## Install Gokarna as a Hugo module
+
+Derived from the [Hugo modules](https://gohugo.io/hugo-modules/use-modules) documentation.
+
+0. Install `git` and `go`
+
+1. Init your project
+
+    ```sh
+    hugo mod init github.com/user/project
+    ```
+
+2. Add Gokarna to `hugo.toml`
+
+    ```toml
+    [module]
+      [[module.imports]]
+        path = "github.com/gokarna-theme/gokarna-hugo"
+    ```
+
+    N.B. The `theme` key in `hugo.toml` is not needed when installed as a Hugo module.
+
+3. Build your project
+
+    ```sh
+    hugo
+    ```
+
+4. Store module dates, versions, latest commit SHA, etc.
+
+    ```sh
+    git add go.sum go.mod
+    git commit -m 'chore: add gokarna as a hugo module'
+    ```
+
+5. Update modules
+  
+    ```sh
+    hugo mod get -u && hugo mod tidy
+    ```

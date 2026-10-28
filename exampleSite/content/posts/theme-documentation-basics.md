@@ -36,6 +36,8 @@ git init
 git submodule add https://github.com/gokarna-theme/gokarna-hugo.git themes/gokarna
 ```
 
+Or [install as a Hugo module](/posts/theme-documentation-advanced/#install-gokarna-as-a-hugo-module).
+
 ### c. Basic Configuration {#basic-configuration}
 
 A simple Hugo [configuration file](https://gohugo.io/getting-started/configuration/#configuration-file) with [menu items](https://gohugo.io/content-management/menus/#properties-front-matter).
@@ -47,7 +49,7 @@ baseURL = "https://example.org/"
 defaultContentLanguage = "en"
 # Automatically generate robots.txt
 enableRobotsTXT = true
-languageCode = "en"
+locale = "en"
 theme = "gokarna"
 title = "My New Hugo Site"
 
@@ -233,7 +235,9 @@ Add arbitrary HTML code to the [`<head>` element](https://developer.mozilla.org/
   customHeadHTML = "<script>console.log('Any HTML')</script>"
 ```
 
-Examples are available in the [advanced documentation](/posts/theme-documentation-advanced/#bring-your-own-scripts).
+Furthermore, for longer HTML fragments or requiring templating, you can override `layouts/partials/custom-head.html` which is shipped as an empty partial by the theme.
+
+Examples are available in the advanced documentation, for [`customHeadHTML`](/posts/theme-documentation-advanced/#bring-your-own-scripts) and for [the custom head partial](/posts/theme-documentation-advanced/#custom-head-partial).
 
 ### Date format 
 
@@ -281,14 +285,21 @@ The number of posts displayed on the home page can be changed by setting `number
 
 ### Favicons
 
-Place favicons into the `static/` directory. The following files are supported:
+There are two options to set your favicons. The first option is to put the files in the `static/` directory, the following files are supported:
 
+- `favicon.svg`
+- `favicon.ico` (usually 16x16 or 32x32 or both combined)
 - `apple-touch-icon.png` (180x180)
 - `favicon-32x32.png` (32x32)
 - `favicon-16x16.png` (16x16)
-- `mstile-150x150.png` (150x150)
-- `android-chrome-192x192.png` (192x192)
-- `android-chrome-512x512.png` (512x512)
+
+Alternatively, you can put these files in the `assets/` directory, or place only:
+
+- `favicon.svg`
+- `favicon.ico` (usually 16x16 or 32x32 or both combined)
+- `favicon.png` (should be 180x180 or larger and square)
+
+in there, and apple-touch-icon and the 32x32 and 16x16 versions will be created for you.
 
 Favicons can be generated using services such as [favicon.io](https://favicon.io), or [realfavicongenerator.net](https://realfavicongenerator.net/).
 

@@ -132,8 +132,23 @@ function toggleTheme(event) {
     }
 }
 
+function matchThemeColor() {
+    const themeColor = document.getElementById("theme-color");
+    if (themeColor) {
+        themeColor.setAttribute('content', window.getComputedStyle(document.documentElement).backgroundColor);
+    }
+}
+
 function setTheme(themeToSet, targets) {
+    // When enabling, need to wait until CSS is parsed before matching it.
+    const awaitingDarkCss = themeToSet !== 'light' && darkThemeCss.disabled;
+    if (awaitingDarkCss) {
+        darkThemeCss.addEventListener('load', matchThemeColor, { once: true });
+    }
     darkThemeCss.disabled = themeToSet === 'light';
+    if (!awaitingDarkCss) {
+        matchThemeColor();
+    }
     targets.forEach((target) => {
         target.querySelector('a').innerHTML = feather.icons[THEME_TO_ICON_CLASS[themeToSet].split('-')[1]].toSvg();
         target.querySelector(".dark-theme-toggle-screen-reader-target").textContent = [THEME_TO_ICON_TEXT_CLASS[themeToSet]];

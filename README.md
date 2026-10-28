@@ -11,6 +11,8 @@ Gokarna is an opinionated theme with a focus on minimalism and simplicity.
 - [James Davidson](https://jamesdavidson.xyz)
 - [David Kröll](https://davidkroell.com)
 - [Mansoor Barri](https://mansoorbarri.com)
+- [Oliver Freyermuth](https://olifre.github.io)
+- [JulietEchoDelta](https://github.com/JulietEchoDelta)
 
 ### Demo: [https://gokarna-hugo.netlify.app](https://gokarna-hugo.netlify.app)
 
@@ -32,7 +34,7 @@ Gokarna is fast, responsive, and [SEO-friendly](#performance).
 - [Syntax highlighting](https://gokarna-hugo.netlify.app/posts/theme-documentation-advanced/#syntax-highlighting)
 - [Custom HTML, JavaScript, and CSS](https://gokarna-hugo.netlify.app/posts/theme-documentation-advanced/#custom-head-and-footer-html)
 - [Configurable Table of Contents](https://gokarna-hugo.netlify.app/posts/theme-documentation-advanced/#table-of-contents)
-- Español (Spanish/Catalan), Deutsch (German), Français (French), Polski (Polish), Português Brasileiro (Brazilian Portuguese), and Русский (Russian) [translations](https://github.com/gokarna-theme/gokarna-hugo/tree/main/i18n)
+- Español (Spanish/Catalan), Deutsch (German), Français (French), Polski (Polish), Português Brasileiro (Brazilian Portuguese), Русский (Russian), and 正體字 (Traditional Chinese) [translations](https://github.com/gokarna-theme/gokarna-hugo/tree/main/i18n)
 - Google Lato fonts
 - Auto-generated RSS feed
 
@@ -85,7 +87,7 @@ Examples include:
 
 ## Translations
 
-Change [`languageCode`](https://gohugo.io/content-management/multilingual/#configure-languages) to use one of [our translations](https://github.com/gokarna-theme/gokarna-hugo/tree/main/i18n).
+Change [`locale`](https://gohugo.io/configuration/languages/) to use one of [our translations](https://github.com/gokarna-theme/gokarna-hugo/tree/main/i18n).
 
 Missing a language? Make Gokarna multilingual by [creating a translation table](https://gohugo.io/functions/lang/translate/#simple-translations).
 
